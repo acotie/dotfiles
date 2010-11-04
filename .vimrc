@@ -154,17 +154,6 @@ map <m-p> :cp<cr>
 iab === # =========================================================================
 iab --- # -------------------------------------------------------------------------
 
-" Template Toolkit用
-iab TS    [% %]
-iab Ts    [% etc %]
-iab TI    [% INCLUDE "" %]
-iab TIF   [% IF %][% END %]
-iab TIFE  [% ELSIF %]
-iab TIFEL [% ELSE %]
-iab TF    [% FOREACH %][% END %]
-iab TW    [% WHILE %][% END %]
-iab TS    [% SWITCH %][% CASE %][% END %]
-
 iab Cmyself my ($self, $c) = @_;
 iab Cdebug $c->log->debug(
 iab Cinfo $c->log->info(
