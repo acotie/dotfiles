@@ -42,6 +42,11 @@ filetype plugin indent on
 filetype plugin on
 syntax on
 
+"Encoding 
+set enc=utf-8 
+set fenc=utf-8 
+set fencs=iso-2022-jp,sjis,cp932,euc-jp,utf-8
+set statusline=%f\ %{'['.(&fenc!=''?&fenc:'?').'-'.&ff.']'}
 "ヘルプファイル
 helptags $HOME/.vim/doc
 
@@ -62,8 +67,6 @@ autocmd FileType c set omnifunc=ccomplete#Complete
 "CF用コメントハイライト有効
 :let html_wrong_comments=1
 
-"TT用syntax
-:au BufEnter *.tt,*.cfm execute ":setlocal filetype=html"
 
 "辞書ファイルを使用する設定に変更
 set complete+=k
@@ -73,6 +76,13 @@ set exrc
 
 "バッファを開いた時に、カレントディレクトリを自動で移動
 :au BufEnter *.pl,*.pm,*.cgi,*.yaml,*.json execute ":lcd " . expand("%:p:h")
+
+" actionscript & mxml
+au BufNewFile,BufRead *.as set filetype=actionscript
+au BufNewFile,BufRead *.mxml set filetype=mxml
+
+au BufNewFile,BufRead *.tt,*.cfm set filetype=html
+au BufNewFile,BufRead *.t set filetype=perl
 
 noremap  
 noremap!  
@@ -210,3 +220,19 @@ ab tue tuesday
 ab Wed Wednesday
 ab wed wednesday
 
+
+"MacVim用
+if has('gui_macvim')
+    set showtabline=2 " タブを常に表示
+    set imdisable " IMを無効化
+    set transparency=5 " 透明度を指定
+    set antialias
+    set guifont=Monaco:h14
+    colorscheme macvim
+    set nobackup
+endif
+
+if has("gui_running")
+  set fuoptions=maxvert,maxhorz
+  au GUIEnter * set fullscreen
+endif
